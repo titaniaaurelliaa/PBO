@@ -1,0 +1,182 @@
+//jual
+public class Jual {
+    private LocalDate tanggal;
+    //private Karyawan sales;
+    private Mobil merk;
+
+    public LocalDate getTanggal(){
+        return tanggal;
+    }
+
+    public void setTanggal(LocalDate tanggal){
+        this.tanggal = tanggal;
+    }
+
+    // public Karyawan getSales(){
+    //     return sales;
+    // }
+
+    // public void setSales(Karyawan sales){
+    //     this.sales = sales;
+    // }
+
+    public Mobil getMerk(){
+        return merk;
+    }
+
+    public void setMerk(Mobil merk){
+        this.merk = merk;
+    }
+
+    public String getInfo(){
+        String info = "";
+        info += "\tTanggal : " + tanggal;
+        info += ", Dijual oleh : " + merk.getInfo();
+        info += "\n";
+
+        return info;
+    }
+
+//karyawan
+public class Karyawan {
+    private String nama;
+    private String jabatan;
+    private ArrayList<Jual> riwayatPenjualan;
+
+    public Karyawan(String nama, String jabatan){
+        this.nama = nama;
+        this.jabatan = jabatan;
+        this.riwayatPenjualan = new ArrayList<Jual>();
+    }
+
+    public String getNama(){
+        return nama;
+    }
+
+    public void setNama(String nama){
+        this.nama = nama;
+    }
+
+    public String getJabatan(){
+        return jabatan;
+    }
+
+    public void setJabatan(String jabatan){
+        this.jabatan = jabatan;
+    }
+
+    // public String getInfo(){
+    //     return nama + "(" + jabatan + ")";
+    // }
+
+    public String getInfo(){
+        String info = "";
+        info += "Nama : " + this.nama + "\n";
+        info += "Jabatan : " + this.jabatan + "\n";
+
+        // if (!riwayatPenjualan.isEmpty()){
+        //     info += "Riwayat Penjualan : \n";
+
+        //     for (Jual jual : riwayatPenjualan){
+        //         info += jual.getInfo();
+        //     }
+        // } else {
+        //     info += "Belum ada riwayat penjualan";
+        // }
+        
+        info += "\n";
+
+        return info;
+    }
+
+    public void tambahPenjualan(LocalDate tanggal, Mobil merk){
+        Jual jual = new Jual();
+        jual.setTanggal(tanggal);
+        jual.setMerk(merk);
+        riwayatPenjualan.add(jual);
+    }
+}
+
+//mobil
+public class Mobil {
+    private String merk;
+    private double harga;
+    //private ArrayList<Jual> jualMobil;
+
+    public Mobil(String merk, double harga){
+        this.merk = merk;
+        this.harga = harga;
+        //this.jualMobil = new ArrayList<Jual>();
+    }
+
+    public String getMerk(){
+        return merk;
+    }
+
+    public void setMerk(){
+        this.merk = merk;
+    }
+
+    public double getHarga(){
+        return harga;
+    }
+
+    public void setHarga(){
+        this.harga = harga;
+    }
+
+    public String getInfo(){
+        return merk + "(" + harga + ")";
+        // String info = "";
+        // info += "Merk : " + this.merk + "\n";
+        // info += "Harga : " + this.harga + "\n";
+        // if (!jualMobil.isEmpty()){
+        //     info += "Riwayat terjual : \n";
+
+        //     for (Jual jual : jualMobil){
+        //         info += jual.getInfo(); //
+        //     }
+        // } else {
+        //     info += "Belum ada riwayat terjual";
+        // }
+        
+        // info += "\n";
+
+        // return info;
+    }
+
+    // public void tambahJual(LocalDate tanggal, Karyawan sales){
+    //     Jual jual = new Jual();
+    //     jual.setTanggal(tanggal);
+    //     jual.setSales(sales);
+    //     jualMobil.add(jual);
+    // }
+}
+
+//demo
+package Jobsheet4.tugas;
+
+import java.time.LocalDate;
+
+public class ShowroomDemo {
+    public static void main(String[] args) {
+        Mobil mobil1 = new Mobil("Fortuner", 1000);
+        Mobil mobil2 = new Mobil("Innova", 500);
+
+        Karyawan titan = new Karyawan("Titan", "sales");
+        titan.tambahPenjualan(LocalDate.of(2024, 9, 26), mobil2);
+        titan.getInfo();
+        mobil1.getInfo();
+        // Karyawan aurel = new Karyawan("Aurell", "sales");
+        // aurel.getInfo();
+
+        // mobil1.tambahJual(LocalDate.of(2024, 9, 19), titan);
+        // System.out.println(mobil1.getInfo());
+
+        // mobil1.tambahJual(LocalDate.of(2024, 9, 19), aurel);
+        // System.out.println(mobil1.getInfo());
+
+        // System.out.println(mobil2.getInfo());
+
+    }
+}
