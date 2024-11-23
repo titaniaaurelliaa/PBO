@@ -2,8 +2,6 @@ package Kuis2.soal3;
 import java.util.ArrayList;
 import java.util.List;
 
-import Jobsheet4.tugas.Mobil;
-
 public class kendaraanDemo {
     public static void main(String[] args) {
         List<kendaraan>
